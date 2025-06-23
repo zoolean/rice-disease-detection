@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deteksi Penyakit Padi</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-light">
+
+    <div class="container py-5 text-center">
+      <h2 class="mb-4 text-success">Deteksi Penyakit Padi</h2>
+  
+      <!-- Tombol Awal -->
+      <div id="main-menu" class="d-flex justify-content-center gap-3">
+        <button class="btn btn-outline-primary btn-lg" onclick="showUpload()">Upload Foto</button>
+        <button class="btn btn-outline-success btn-lg" onclick="showCamera()">Ambil Foto</button>
+      </div>
+  
+      <!-- Upload Section -->
+      <div id="upload-section" class="card p-4 mt-4 shadow-sm mx-auto" style="max-width: 400px;">
+        <h5 class="card-title mb-3">Upload Gambar</h5>
+        <input type="file" id="uploadInput" class="form-control mb-2" accept="image/*">
+        <button class="btn btn-primary w-100" onclick="uploadImage()">Upload</button>
+        <button class="btn btn-link mt-2" onclick="goBack()">Kembali</button>
+      </div>
+  
+      <!-- Kamera Section -->
+      <div id="camera-section" class="card p-4 mt-4 shadow-sm mx-auto" style="max-width: 400px;">
+        <h5 class="card-title mb-3">Ambil Foto dari Kamera</h5>
+        <video id="video" width="100%" height="auto" autoplay class="rounded shadow"></video>
+        <button class="btn btn-warning w-100 mt-3" onclick="capturePhoto()">Capture</button>
+        <button class="btn btn-danger w-100 mt-2" onclick="stopCamera()">Matikan Kamera</button>
+        <button class="btn btn-link mt-2" onclick="goBack()">Kembali</button>
+      </div>
+  
+      <!-- Preview Gambar -->
+      <div id="preview-section" class="mt-5">
+        <h5 class="mb-3">Pratinjau Gambar:</h5>
+        <canvas id="previewCanvas" width="300" height="300" class="shadow rounded border"></canvas>
+      </div>
+  
+      <!-- Hasil Deteksi -->
+      <div id="result-section" class="mt-4">
+        <h5 class="mb-2">Hasil Deteksi:</h5>
+        <div class="alert alert-success w-50 mx-auto" role="alert">
+          <p id="prediction" class="mb-1 fw-bold"></p>
+          <p id="confidence" class="mb-0"></p>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+  
+
+</html>
