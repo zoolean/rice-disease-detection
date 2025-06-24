@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify, render_template
 app = Flask(__name__)
 
 # Load TFLite Model
-interpreter = tflite.Interpreter(model_path="model.tflite")  
+interpreter = tflite.Interpreter(model_path="best_model_fix.tflite")  
 interpreter.allocate_tensors()
 
 # Get input and output details
